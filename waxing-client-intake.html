@@ -1,97 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hair Removal Service - Client Intake Form</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; max-width: 600px; margin: auto; }
-        .form-section { margin-bottom: 25px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
-        label { font-weight: bold; display: block; margin-top: 10px; }
-        input[type="text"], input[type="date"], textarea, select { width: 95%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; }
-        canvas { border: 2px solid #333; cursor: crosshair; margin-top: 10px; width: 100%; height: auto; }
-        button { padding: 12px; margin-top: 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Company - Waxing & Threading Client Intake Form</title>
+<style>
+    :root {
+        --primary-brown: #5b4a42;
+        --secondary-beige: #dcd1c0;
+        --light-beige: #f0ede6;
+        --border-color: #aba093;
+        --text-color: #333;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text-color);
+        margin: 0;
+        padding: 20px;
+        background-color: #fff;
+        background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* Header Styles */
+    .header-banner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .logo {
+        font-weight: bold;
+        font-size: 24px;
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo span.uc-box {
+        background: #333;
+        color: #fff;
+        padding: 5px 10px;
+        margin-right: 5px;
+        font-size: 18px;
+    }
+
+    .main-title-banner {
+        background-color: var(--secondary-beige);
+        text-align: center;
+        padding: 15px 0;
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    .cursive-title {
+        font-family: 'Brush Script MT', cursive;
+        font-size: 3em;
+        color: var(--primary-brown);
+        position: absolute;
+        top: -30px;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    h1 {
+        margin: 10px 0 0 0;
+        font-size: 1.2em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--primary-brown);
+    }
+
+    /* Input Line Styles */
+    .input-line-group {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .input-wrapper {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    .input-wrapper label {
+        white-space: nowrap;
+        margin-right: 10px;
+        font-weight: 500;
+        color: var(--primary-brown);
+    }
+
+    .line-input {
+        border: none;
+        border-bottom: 1px solid var(--text-color);
+        flex-grow: 1;
+        outline: none;
+        padding: 5px;
+        background: transparent;
+    }
+
+    /* Section Styles */
+    .form-section {
+        margin-bottom: 40px;
+    }
+
+    h2 {
+        color: var(--primary-brown);
+        font-size: 1.1em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    /* Question List Styles */
+    .question-list {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    .question-item {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .question-text {
+        flex: 1;
+        min-width: 300px;
+        padding-right: 20px;
+        font-weight: 500;
+        color: var(--primary-brown);
+    }
+
+    .question-text p {
+        margin: 5px 0 0 20px;
+        font-size: 0.9em;
+        color: var(--text-color);
+    }
+
+    .options-group {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .option-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--primary-brown);
+    }
+
+    .option-label input[type="checkbox"]{
+        margin-right: 8px;
+        width: 18px;
+        height: 18px;
+        accent-color: var(--primary-brown);
+    }
+
+    .specify-input {
+        border: none;
+        border-bottom: 1px solid var(--text-color);
+        outline: none;
+        padding: 2px;
+        background: transparent;
+        width: 60%;
+        margin-top: 5px;
+    }
+
+    /* Footer & Signature Styles */
+    .declaration {
+        font-size: 0.8em;
+        font-style: italic;
+        text-align: center;
+        margin: 30px 0;
+        color: var(--text-color);
+    }
+
+    .signature-lines {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .signature-wrapper {
+        flex: 1;
+        min-width: 300px;
+        text-align: center;
+    }
+
+    .signature-wrapper label {
+        display: block;
+        font-weight: bold;
+        color: var(--primary-brown);
+        margin-bottom: 5px;
+    }
+
+    canvas {
+        border: 2px solid var(--primary-brown);
+        cursor: crosshair;
+        background: #fff;
+        width: 100%;
+        height: 150px;
+        display: block;
+    }
+
+    .clear-btn {
+        margin-top: 5px;
+        padding: 5px 10px;
+        background-color: #999;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8em;
+    }
+
+    .submit-button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: var(--primary-brown);
+        color: white;
+        border: none;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 40px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    .submit-button:hover {
+        background-color: #4a3c35;
+    }
+</style>
 </head>
 <body>
 
-    <h2>Hair Removal Service - Client Intake Form</h2>
-
+<div class="container">
     <form id="clientForm">
-        <div class="form-section">
-            <label>Client Name:</label>
-            <input type="text" name="clientName" required>
-            <label>Client Number:</label>
-            <input type="text" name="clientNumber" required>
-            <label>Date:</label>
-            <input type="date" name="date" required>
-        </div>
-
-        <div class="form-section">
-            <label>1. Wax method preference?</label>
-            <input type="radio" name="waxMethod" value="Tin"> Tin
-            <input type="radio" name="waxMethod" value="Roll-on"> Roll-on
+        <header>
+            <div class="header-banner">
+                <div></div>
+                <div class="logo">
+                    <span class="uc-box">UC</span> Urban Company
+                </div>
+            </div>
             
-            <label>2. Wax flavour preference?</label>
-            <select name="waxFlavour">
-                <option value="Honey">Honey (Sensitive)</option>
-                <option value="Banana">Banana (Normal)</option>
-            </select>
-        </div>
+            <div class="main-title-banner">
+                <span class="cursive-title">Waxing & Threading</span>
+                <h1>CLIENT INTAKE FORM</h1>
+            </div>
 
-        <div class="form-section">
-            <label>Customer Signature:</label>
-            <canvas id="customerSign" width="400" height="150"></canvas>
-            <button type="button" onclick="clearCanvas('customerSign', custCtx)" style="width: auto; background: #666;">Clear</button>
-        </div>
+            <div class="input-line-group">
+                <div class="input-wrapper" style="flex-grow: 2;">
+                    <label>Full Name</label>
+                    <input type="text" name="fullName" class="line-input" required>
+                </div>
+                <div class="input-wrapper">
+                    <label>Contact Phone</label>
+                    <input type="text" name="phone" class="line-input" required>
+                </div>
+            </div>
+            <div class="input-line-group">
+                <div class="input-wrapper">
+                    <label>Date</label>
+                    <input type="date" name="date" class="line-input" required>
+                </div>
+                <div class="input-wrapper">
+                    <label>Time</label>
+                    <input type="time" name="time" class="line-input" required>
+                </div>
+            </div>
+        </header>
 
-        <button id="submitBtn">Submit Form</button>
+        <section class="form-section">
+            <h2>WAXING & THREADING CONSULTATION</h2>
+            
+            <ul class="question-list">
+                <li class="question-item">
+                    <div class="question-text">Have you received waxing, threading or bleaching before?</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q1_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q1_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">
+                        Which wax flavour do you prefer?
+                        <p>o Honey is advised for sensitive skin</p>
+                        <p>o Banana is advised for normal skin</p>
+                    </div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q2_honey"> Honey</label>
+                        <label class="option-label"><input type="checkbox" name="q2_banana"> Banana</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">Which wax method do you prefer?</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q3_tin"> Tin</label>
+                        <label class="option-label"><input type="checkbox" name="q3_rollon"> Roll-on</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">
+                        Have you undergone any chemical peel, laser treatment, or microdermabrasion in the last 7 to 14 days?
+                        <br>
+                        <span style="font-weight: normal; font-size: 0.9em;">if yes, please specify</span> <input type="text" name="q4_specify" class="specify-input">
+                    </div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q4_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q4_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">
+                        Have you ever experienced allergic reaction or irritation from any type of waxing, threading, bleaching or any other skin product?
+                        <br>
+                        <span style="font-weight: normal; font-size: 0.9em;">if yes, please specify</span> <input type="text" name="q5_specify" class="specify-input">
+                    </div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q5_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q5_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">Do you have a history of easily bruised, sensitive, or reactive skin?</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q6_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q6_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">Have you had sunburn or tanning (natural or tanning beds) in the last 48 hours?</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q7_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q7_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">
+                        Are you currently facing any skin issue?
+                        <br>
+                        <span style="font-weight: normal; font-size: 0.9em;">*if yes, please specify</span> <input type="text" name="q8_specify" class="specify-input">
+                    </div>
+                    </li>
+                <li class="question-item">
+                    <div class="question-text">Do you use any topical products containing Acids (AHAs), Retinoids, or high-percentage Vitamin C?</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q9_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q9_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">
+                        Do you have any infectious skin conditions, open sores, rashes, sunburn, or active acne in the service area?
+                        <br>
+                        <span style="font-weight: normal; font-size: 0.9em;">if yes, please specify:</span> <input type="text" name="q10_specify" class="specify-input">
+                    </div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q10_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q10_no"> No</label>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p class="declaration">
+                **I declare that I have read this consultation form thoroughly and I understand every question asked. I believe I have no medical condition that may affect the service. All of the given answer is correct and true to the best of my knowledge.
+            </p>
+
+            <div class="signature-lines">
+                <div class="signature-wrapper">
+                    <label>Client's Signature</label>
+                    <canvas id="clientSign" width="400" height="150"></canvas>
+                    <button type="button" class="clear-btn" onclick="clearCanvas('clientSign', clientCtx)">Clear Signature</button>
+                </div>
+                <div class="signature-wrapper">
+                    <label>Attendant's Signature</label>
+                    <canvas id="attendantSign" width="400" height="150"></canvas>
+                    <button type="button" class="clear-btn" onclick="clearCanvas('attendantSign', attendantCtx)">Clear Signature</button>
+                </div>
+            </div>
+        </footer>
+
+        <button type="button" id="submitBtn" class="submit-button">Submit Form</button>
     </form>
+</div>
 
-    <script>
-        const scriptUrl = 'YOUR_APPS_SCRIPT_URL_HERE';
+<script>
+    const scriptUrl = 'YOUR_APPS_SCRIPT_URL_HERE'; // Replace with your actual URL
 
-        const custCanvas = document.getElementById("customerSign");
-        const custCtx = custCanvas.getContext("2d");
-        setupDrawing(custCanvas, custCtx);
+    const clientCanvas = document.getElementById("clientSign");
+    const clientCtx = clientCanvas.getContext("2d");
+    const attendantCanvas = document.getElementById("attendantSign");
+    const attendantCtx = attendantCanvas.getContext("2d");
 
-        function setupDrawing(canvas, ctx) {
-            let isDrawing = false;
-            let lastX = 0, lastY = 0;
-            function getCoords(e) {
-                const rect = canvas.getBoundingClientRect();
-                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-                return { x: clientX - rect.left, y: clientY - rect.top };
-            }
-            const start = (e) => { isDrawing = true; const {x, y} = getCoords(e); [lastX, lastY] = [x, y]; };
-            const move = (e) => {
-                if (!isDrawing) return;
-                const {x, y} = getCoords(e);
-                ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(x, y); ctx.stroke();
-                [lastX, lastY] = [x, y];
-                if(e.touches) e.preventDefault();
-            };
-            canvas.addEventListener("mousedown", start); canvas.addEventListener("mousemove", move);
-            canvas.addEventListener("touchstart", start); canvas.addEventListener("touchmove", move);
-            window.addEventListener("mouseup", () => isDrawing = false);
-            window.addEventListener("touchend", () => isDrawing = false);
+    setupDrawing(clientCanvas, clientCtx);
+    setupDrawing(attendantCanvas, attendantCtx);
+
+    function setupDrawing(canvas, ctx) {
+        let isDrawing = false;
+        let lastX = 0, lastY = 0;
+
+        function getCoords(e) {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            return { x: (clientX - rect.left) * scaleX, y: (clientY - rect.top) * scaleY };
         }
 
-        function clearCanvas(id, ctx) { ctx.clearRect(0, 0, 400, 150); }
+        const start = (e) => { 
+            isDrawing = true; 
+            const {x, y} = getCoords(e); 
+            [lastX, lastY] = [x, y]; 
+            if(e.touches) e.preventDefault();
+        };
 
-        document.getElementById('submitBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            this.disabled = true;
-            this.innerText = "Submitting...";
+        const move = (e) => {
+            if (!isDrawing) return;
+            const {x, y} = getCoords(e);
+            ctx.lineWidth = 2;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = "#000";
+            ctx.beginPath(); 
+            ctx.moveTo(lastX, lastY); 
+            ctx.lineTo(x, y); 
+            ctx.stroke();
+            [lastX, lastY] = [x, y];
+            if(e.touches) e.preventDefault();
+        };
 
-            const formData = new FormData(document.getElementById('clientForm'));
-            formData.append("customerSignature", custCanvas.toDataURL("image/png"));
+        const end = () => isDrawing = false;
 
-            fetch(scriptUrl, { method: 'POST', body: formData })
-            .then(() => { alert("Success!"); location.reload(); })
-            .catch(() => { alert("Error!"); this.disabled = false; });
+        canvas.addEventListener("mousedown", start);
+        canvas.addEventListener("mousemove", move);
+        canvas.addEventListener("mouseup", end);
+        canvas.addEventListener("mouseout", end);
+        canvas.addEventListener("touchstart", start, {passive: false});
+        canvas.addEventListener("touchmove", move, {passive: false});
+        canvas.addEventListener("touchend", end);
+    }
+
+    function clearCanvas(id, ctx) {
+        const canvas = document.getElementById(id);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    document.getElementById('submitBtn').addEventListener('click', function() {
+        const form = document.getElementById('clientForm');
+        if (!form.reportValidity()) return;
+
+        this.disabled = true;
+        this.innerText = "Submitting...";
+
+        const formData = new FormData(form);
+        formData.append("clientSignature", clientCanvas.toDataURL("image/png"));
+        formData.append("attendantSignature", attendantCanvas.toDataURL("image/png"));
+
+        fetch(scriptUrl, { method: 'POST', body: formData })
+        .then(res => res.text())
+        .then(data => {
+            alert("Form submitted successfully!");
+            location.reload();
+        })
+        .catch(err => {
+            alert("Error submitting form. Please check connection.");
+            this.disabled = false;
+            this.innerText = "Submit Form";
+            console.error(err);
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
