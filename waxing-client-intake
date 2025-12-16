@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waxing Consultation Form</title>
+    <style>
+        /* --- STYLES --- */
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h2 { text-align: center; color: #333; }
+        .form-section { 
+            margin-bottom: 25px; 
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        label { 
+            font-weight: bold; 
+            display: block; 
+            margin-top: 10px; 
+        }
+        input[type="text"], textarea, select {
+            width: 95%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        /* Radio/Checkbox Alignment */
+        .radio-options label {
+            display: inline-block;
+            font-weight: normal;
+            margin-right: 20px;
+        }
+        canvas { 
+            border: 2px solid #333; 
+            cursor: crosshair; 
+            margin-top: 10px; 
+            width: 100%; 
+            height: auto;
+        }
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Waxing & Skin Consultation Form</h2>
+
+    <form id="clientForm" action="[REPLACE_WITH_YOUR_GOOGLE_APPS_SCRIPT_URL]" method="post" onsubmit="captureCanvasData();">
+
+        <div class="form-section">
+            <h3>Basic Information</h3>
+            <label>Client Name:</label>
+            <input type="text" name="clientName" required>
+
+            <label>Date:</label>
+            <input type="date" name="date" required>
+        </div>
+
+        <div class="form-section">
+            <h3>Treatment History & Preferences</h3>
+            
+            <label>1. Have you received waxing, threading, or bleaching before?</label>
+            <div class="radio-options">
+                <label><input type="radio" name="priorTreatments" value="Yes" required> Yes</label>
+                <label><input type="radio" name="priorTreatments" value="No"> No</label>
+            </div>
+
+            <label>2. Which wax method do you prefer?</label>
+            <div class="radio-options">
+                <label><input type="radio" name="waxMethod" value="Tin" required> Tin</label>
+                <label><input type="radio" name="waxMethod" value="Roll-on"> Roll-on</label>
+            </div>
+
+            <label>3. Which wax flavour do you prefer?</label>
+            <p style="font-size: 0.9em; margin-top: 5px;">*Honey is advised for sensitive skin. Banana is advised for normal skin.</p>
+            <select name="waxFlavour" required>
+                <option value="">--Select Preference--</option>
+                <option value="Honey">Honey (Sensitive Skin)</option>
+                <option value="Banana">Banana (Normal Skin)</option>
+            </select>
+        </div>
+
+        <div class="form-section">
+            <h3>Skin History & Safety Check</h3>
+            
+            <label>4. Have you undergone any chemical peel, laser treatment, or microdermabrasion in the last 7 to 14 days?</label>
+            <div class="radio-options">
+                <label><input type="radio" name="recentProcedures" value="Yes" required> Yes</label>
+                <label><input type="radio" name="recentProcedures" value="No"> No</label>
+            </div>
+            <label style="font-weight: normal; margin-top: 5px;">If yes, please specify:</label>
+            <input type="text" name="recentProceduresDetails">
+
+            <label>5. Have you ever experienced allergic reaction or irritation from any type of waxing, threading, bleaching, or any other skin product?</label>
+            <div class="radio-options">
+                <label><input type="radio" name="allergicReaction" value="Yes" required> Yes</label>
+                <label><input type="radio" name="allergicReaction" value="No"> No</label>
+            </div>
+            <label style="font-weight: normal; margin-top: 5px;">If yes, please specify:</label>
+            <input type="text" name="allergyDetails">
+
+            <label>6. Do you have a history of easily bruised, sensitive, or reactive skin?</label>
+            <div class="radio-options">
+                <label><input type="radio" name="reactiveSkin" value="Yes" required> Yes</label>
+                <label><input type="radio" name="reactiveSkin" value="No"> No</label>
+            </div>
+
+            <label>7. Have you had sunburn or tanning (natural or tanning beds) in the last 48 hours?</label>
+            <div class="radio-options">
+                <label><input type="radio" name="sunburnOrTanning" value="Yes" required> Yes</label>
+                <label><input type="radio" name="sunburnOrTanning" value="No"> No</label>
+            </div>
+
+            <label>8. Are you currently facing any active skin issue?</label>
+            <div class="radio-options">
+                <label><input type="radio" name="activeSkinIssue" value="Yes" required> Yes</label>
+                <label><input type="radio" name="activeSkinIssue" value="No"> No</label>
+            </div>
+            <label style="font-weight: normal; margin-top: 5px;">If yes, please specify:</label>
+            <input type="text" name="activeSkinIssueDetails">
+
+            <label>9. Do you use any topical products containing Acids (AHAs), Retinoids, or high-percentage Vitamin C?</label>
+            <div class="radio-options">
+                <label><input type="radio" name="topicalProducts" value="Yes" required> Yes</label>
+                <label><input type="radio" name="topicalProducts" value="No"> No</label>
+            </div>
+
+            <label>10. Do you have any infectious skin conditions, open sores, rashes, sunburn, or active acne in the service area?</label>
+            <div class="radio-options">
+                <label><input type="radio" name="infectiousSkin" value="Yes" required> Yes</label>
+                <label><input type="radio" name="infectiousSkin" value="No"> No</label>
+            </div>
+            <label style="font-weight: normal; margin-top: 5px;">If yes, please specify:</label>
+            <input type="text" name="infectiousSkinDetails">
+        </div>
+
+        <div class="form-section">
+            <h3>Declaration</h3>
+            <p style="font-style: italic; font-weight: bold;">
+                I declare that I have read this consultation form thoroughly and I understand every question asked. I believe I have no medical condition that may affect the service. All of the given answer is correct and true to the best of my knowledge.
+            </p>
+        </div>
+
+        <div class="form-section">
+            <h3>Signatures</h3>
+            
+            <label>Client's Signature:</label>
+            <canvas id="customerSign" width="400" height="150"></canvas><br>
+            <button type="button" onclick="clearCanvas('customerSign', custCtx)">Clear Signature</button>
+
+            <label>Attendant's Signature:</label>
+            <canvas id="attendantSign" width="400" height="150"></canvas><br>
+            <button type="button" onclick="clearCanvas('attendantSign', attCtx)">Clear Signature</button>
+        </div>
+
+        <input type="hidden" name="customerSignature" id="customerSignature">
+        <input type="hidden" name="therapistSignature" id="attendantSignature">
+
+        <button type="submit" id="submitButton" onclick="this.disabled=true;">Submit Consultation Form</button>
+    </form>
+    <script>
+        // Setup signature canvases
+        const custCanvas = document.getElementById("customerSign");
+        const custCtx = custCanvas.getContext("2d");
+        setupDrawing(custCanvas, custCtx);
+
+        const attCanvas = document.getElementById("attendantSign");
+        const attCtx = attCanvas.getContext("2d");
+        setupDrawing(attCanvas, attCtx);
+
+        // --- DRAWING LOGIC (TOUCH & MOUSE FIX) ---
+        function setupDrawing(canvas, ctx) {
+            let isDrawing = false;
+            let lastX = 0;
+            let lastY = 0;
+            let touchMoved = false;
+
+            function getCoords(e) {
+                const rect = canvas.getBoundingClientRect();
+                if (e.touches && e.touches.length > 0) {
+                    return {
+                        x: e.touches[0].clientX - rect.left,
+                        y: e.touches[0].clientY - rect.top
+                    };
+                } else {
+                    return {
+                        x: e.offsetX,
+                        y: e.offsetY
+                    };
+                }
+            }
+
+            function draw(x, y) {
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                [lastX, lastY] = [x, y];
+            }
+
+            // Mouse events
+            canvas.addEventListener("mousedown", (e) => {
+                isDrawing = true;
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            });
+            canvas.addEventListener("mousemove", (e) => {
+                if (!isDrawing) return;
+                ctx.lineWidth = 2;
+                ctx.lineCap = "round";
+                ctx.strokeStyle = "blue";
+                draw(e.offsetX, e.offsetY);
+            });
+            canvas.addEventListener("mouseup", () => isDrawing = false);
+            canvas.addEventListener("mouseout", () => isDrawing = false);
+
+            // Touch events
+            canvas.addEventListener("touchstart", (e) => {
+                isDrawing = true;
+                touchMoved = false;
+                const { x, y } = getCoords(e);
+                [lastX, lastY] = [x, y];
+                e.preventDefault();
+            });
+            canvas.addEventListener("touchmove", (e) => {
+                if (!isDrawing) return;
+                touchMoved = true;
+                const { x, y } = getCoords(e);
+                ctx.lineWidth = 2;
+                ctx.lineCap = "round";
+                ctx.strokeStyle = "blue";
+                draw(x, y);
+                e.preventDefault();
+            });
+            canvas.addEventListener("touchend", () => {
+                isDrawing = false;
+                if (!touchMoved) {
+                    // This handles single taps
+                    ctx.beginPath();
+                    ctx.arc(lastX, lastY, 1, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+                touchMoved = false;
+            });
+            canvas.addEventListener("touchcancel", () => isDrawing = false);
+            
+            // Safety measure to ensure drawing stops correctly
+            document.body.addEventListener("mouseup", () => isDrawing = false);
+            document.body.addEventListener("touchend", () => isDrawing = false);
+        }
+
+        // Clear function
+        function clearCanvas(id, ctx) {
+            const canvas = document.getElementById(id);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Function to capture canvas data and then submit the form
+        function captureCanvasData() {
+            // Populate the hidden input fields with data URLs from the canvases
+            document.getElementById("customerSignature").value = custCanvas.toDataURL("image/png");
+            document.getElementById("attendantSignature").value = attCanvas.toDataURL("image/png");
+        }
+    </script>
+</body>
+</html>
