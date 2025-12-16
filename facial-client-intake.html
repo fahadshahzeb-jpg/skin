@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urban Company - Facials Client Intake Form</title>
+<title>Yammak - Waxing & Threading Client Intake Form</title>
 <style>
     :root {
         --primary-brown: #5b4a42;
@@ -39,20 +39,10 @@
         margin-bottom: 10px;
     }
 
-    .logo {
-        font-weight: bold;
-        font-size: 24px;
-        color: var(--text-color);
-        display: flex;
-        align-items: center;
-    }
-    
-    .logo span.uc-box {
-        background: #333;
-        color: #fff;
-        padding: 5px 10px;
-        margin-right: 5px;
-        font-size: 18px;
+    /* Logo Style Update */
+    .logo img {
+        height: 60px; /* Adjust height as needed to fit perfectly */
+        width: auto;
     }
 
     .main-title-banner {
@@ -125,118 +115,72 @@
         margin-bottom: 10px;
     }
 
-    .subtitle {
-        color: var(--text-color);
-        margin-bottom: 15px;
-        font-size: 0.95em;
+    /* Question List Styles */
+    .question-list {
+        list-style-type: disc;
+        padding-left: 20px;
     }
 
-    /* Table Styles */
-    table {
-        width: 100%;
-        border-collapse: collapse;
+    .question-item {
         margin-bottom: 20px;
-        font-size: 0.9em;
-    }
-
-    th, td {
-        border: 1px solid var(--primary-brown);
-        padding: 10px;
-        text-align: center;
-        vertical-align: middle;
-    }
-
-    th {
-        background-color: var(--light-beige);
-        color: var(--primary-brown);
-        font-weight: 600;
-    }
-
-    .col-num { width: 5%; }
-    .col-question { width: 25%; text-align: left; }
-    .col-option { width: 17.5%; }
-
-    .option-label {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        text-align: left;
-        cursor: pointer;
-        height: 100%;
-    }
-
-    .option-label input[type="radio"],
-    .option-label input[type="checkbox"]{
-        margin-top: 4px;
-        margin-right: 8px;
-        flex-shrink: 0;
-    }
-
-    /* Middle Section Layout */
-    .middle-section-container {
         display: flex;
         justify-content: space-between;
-        gap: 40px;
+        align-items: flex-start;
         flex-wrap: wrap;
     }
 
-    .outcome-analysis, .score-card {
+    .question-text {
         flex: 1;
         min-width: 300px;
-    }
-
-    .checklist-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 12px;
-        font-size: 1.1em;
+        padding-right: 20px;
+        font-weight: 500;
         color: var(--primary-brown);
-        cursor: pointer;
     }
 
-    .checklist-item input[type="checkbox"] {
-        width: 20px;
-        height: 20px;
-        margin-right: 15px;
-        accent-color: var(--primary-brown);
+    .question-text p {
+        margin: 5px 0 0 20px;
+        font-size: 0.9em;
+        color: var(--text-color);
     }
 
-    /* Score Card Specifics */
-    .score-table th {
-        background-color: transparent;
-    }
-    .score-table .skin-type-col {
-        text-align: left;
-        font-weight: 600;
-        color: var(--primary-brown);
-        background-color: var(--light-beige);
-    }
-    .score-table td.empty-cell {
-        background-color: #fff;
-    }
-    /* Centering checkboxes in the score card */
-    .score-table input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-        cursor: pointer;
-        accent-color: var(--primary-brown);
-    }
-
-    /* Footer & Signature Styles */
-    .footer-inputs {
+    .options-group {
         display: flex;
-        justify-content: space-between;
-        margin-top: 30px;
-        margin-bottom: 20px;
         gap: 30px;
         flex-wrap: wrap;
     }
 
+    .option-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--primary-brown);
+    }
+
+    .option-label input[type="checkbox"]{
+        margin-right: 8px;
+        width: 18px;
+        height: 18px;
+        accent-color: var(--primary-brown);
+    }
+
+    .specify-input {
+        border: none;
+        border-bottom: 1px solid var(--text-color);
+        outline: none;
+        padding: 2px;
+        background: transparent;
+        width: 60%;
+        margin-top: 5px;
+    }
+
+    /* Footer & Signature Styles */
     .declaration {
         font-size: 0.8em;
         font-style: italic;
         text-align: center;
         margin: 30px 0;
+        color: var(--text-color);
     }
 
     .signature-lines {
@@ -250,6 +194,7 @@
     .signature-wrapper {
         flex: 1;
         min-width: 300px;
+        text-align: center;
     }
 
     .signature-wrapper label {
@@ -307,12 +252,12 @@
             <div class="header-banner">
                 <div></div>
                 <div class="logo">
-                    <span class="uc-box">UC</span> Urban Company
+                    <img src="yammak logo white.png" alt="Yammak Logo">
                 </div>
             </div>
             
             <div class="main-title-banner">
-                <span class="cursive-title">Facials</span>
+                <span class="cursive-title">Waxing & Threading</span>
                 <h1>CLIENT INTAKE FORM</h1>
             </div>
 
@@ -322,172 +267,130 @@
                     <input type="text" name="fullName" class="line-input" required>
                 </div>
                 <div class="input-wrapper">
+                    <label>Contact Phone</label>
+                    <input type="text" name="phone" class="line-input" required>
+                </div>
+            </div>
+            <div class="input-line-group">
+                <div class="input-wrapper">
                     <label>Date</label>
                     <input type="date" name="date" class="line-input" required>
                 </div>
-                <div class="input-wrapper" style="flex-grow: 1.5;">
-                    <label>Contact Phone</label>
-                    <input type="text" name="phone" class="line-input" required>
+                <div class="input-wrapper">
+                    <label>Time</label>
+                    <input type="time" name="time" class="line-input" required>
                 </div>
             </div>
         </header>
 
         <section class="form-section">
-            <h2>SKIN TYPE ANALYSIS</h2>
-            <p class="subtitle">Please tick the most appropriate option for each question</p>
+            <h2>WAXING & THREADING CONSULTATION</h2>
             
-            <table>
-                <thead>
-                    <tr>
-                        <th class="col-num">#</th>
-                        <th class="col-question">Question</th>
-                        <th class="col-option">Option A</th>
-                        <th class="col-option">Option B</th>
-                        <th class="col-option">Option C</th>
-                        <th class="col-option">Option D</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td class="col-question">How does your skin feel most of the time?</td>
-                        <td><label class="option-label"><input type="radio" name="q1" value="A"> Tight and flaky or rough</label></td>
-                        <td><label class="option-label"><input type="radio" name="q1" value="B"> Shiny or greasy</label></td>
-                        <td><label class="option-label"><input type="radio" name="q1" value="C"> Oily/Dry Mix</label></td>
-                        <td><label class="option-label"><input type="radio" name="q1" value="D"> Neither too oily nor too dry</label></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td class="col-question">How does your skin feel after cleansing?</td>
-                        <td><label class="option-label"><input type="radio" name="q2" value="A"> Tight, itchy, or dry</label></td>
-                        <td><label class="option-label"><input type="radio" name="q2" value="B"> Clean and shiny</label></td>
-                        <td><label class="option-label"><input type="radio" name="q2" value="C"> Clean, sometimes oily/dry</label></td>
-                        <td><label class="option-label"><input type="radio" name="q2" value="D"> Clean and soft</label></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td class="col-question">How does your skin feel when you wakeup in the morning?</td>
-                        <td><label class="option-label"><input type="radio" name="q3" value="A"> Dry or tight</label></td>
-                        <td><label class="option-label"><input type="radio" name="q3" value="B"> Oily, shiny</label></td>
-                        <td><label class="option-label"><input type="radio" name="q3" value="C"> Oily T-zone, dry cheeks</label></td>
-                        <td><label class="option-label"><input type="radio" name="q3" value="D"> Normal</label></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td class="col-question">How does your skin react to sun exposure?</td>
-                        <td><label class="option-label"><input type="radio" name="q4" value="A"> Burns easily</label></td>
-                        <td><label class="option-label"><input type="radio" name="q4" value="B"> Tans easily, rarely burns</label></td>
-                        <td><label class="option-label"><input type="radio" name="q4" value="C"> Occasionally burns/tans</label></td>
-                        <td><label class="option-label"><input type="radio" name="q4" value="D"> Hardly ever burns</label></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td class="col-question">How does your skin respond to different types of moisturizers?</td>
-                        <td><label class="option-label"><input type="radio" name="q5" value="A"> Prefer richer</label></td>
-                        <td><label class="option-label"><input type="radio" name="q5" value="B"> Prefer light, oil-free</label></td>
-                        <td><label class="option-label"><input type="radio" name="q5" value="C"> Mixed needs</label></td>
-                        <td><label class="option-label"><input type="radio" name="q5" value="D"> Comfortable with all</label></td>
-                    </tr>
-                </tbody>
-            </table>
+            <ul class="question-list">
+                <li class="question-item">
+                    <div class="question-text">Have you received waxing, threading or bleaching before?</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q1_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q1_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">
+                        Which wax flavour do you prefer?
+                        <p>o Honey is advised for sensitive skin</p>
+                        <p>o Banana is advised for normal skin</p>
+                    </div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q2_honey"> Honey</label>
+                        <label class="option-label"><input type="checkbox" name="q2_banana"> Banana</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">Which wax method do you prefer?</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q3_tin"> Tin</label>
+                        <label class="option-label"><input type="checkbox" name="q3_rollon"> Roll-on</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">
+                        Have you undergone any chemical peel, laser treatment, or microdermabrasion in the last 7 to 14 days?
+                        <br>
+                        <span style="font-weight: normal; font-size: 0.9em;">if yes, please specify</span> <input type="text" name="q4_specify" class="specify-input">
+                    </div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q4_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q4_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">
+                        Have you ever experienced allergic reaction or irritation from any type of waxing, threading, bleaching or any other skin product?
+                        <br>
+                        <span style="font-weight: normal; font-size: 0.9em;">if yes, please specify</span> <input type="text" name="q5_specify" class="specify-input">
+                    </div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q5_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q5_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">Do you have a history of easily bruised, sensitive, or reactive skin?</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q6_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q6_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">Have you had sunburn or tanning (natural or tanning beds) in the last 48 hours?</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q7_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q7_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">
+                        Are you currently facing any skin issue?
+                        <br>
+                        <span style="font-weight: normal; font-size: 0.9em;">*if yes, please specify</span> <input type="text" name="q8_specify" class="specify-input">
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">Do you use any topical products containing Acids (AHAs), Retinoids, or high-percentage Vitamin C?</div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q9_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q9_no"> No</label>
+                    </div>
+                </li>
+                <li class="question-item">
+                    <div class="question-text">
+                        Do you have any infectious skin conditions, open sores, rashes, sunburn, or active acne in the service area?
+                        <br>
+                        <span style="font-weight: normal; font-size: 0.9em;">if yes, please specify:</span> <input type="text" name="q10_specify" class="specify-input">
+                    </div>
+                    <div class="options-group">
+                        <label class="option-label"><input type="checkbox" name="q10_yes"> Yes</label>
+                        <label class="option-label"><input type="checkbox" name="q10_no"> No</label>
+                    </div>
+                </li>
+            </ul>
         </section>
 
-        <div class="middle-section-container form-section">
-            
-            <div class="outcome-analysis">
-                <h2>FACIAL OUTCOME ANALYSIS</h2>
-                <p class="subtitle">Please tick your primary concern(s)</p>
-                <label class="checklist-item"><input type="checkbox" name="outcome" value="Glow"> A. Glow</label>
-                <label class="checklist-item"><input type="checkbox" name="outcome" value="Brightening"> B. Brightening</label>
-                <label class="checklist-item"><input type="checkbox" name="outcome" value="Anti-aging"> C. Anti-aging</label>
-                <label class="checklist-item"><input type="checkbox" name="outcome" value="Anti-acne"> D. Anti-acne</label>
-                <label class="checklist-item"><input type="checkbox" name="outcome" value="Detox"> E. Detox</label>
-            </div>
-
-            <div class="score-card">
-                <h2>SCORE CARD</h2>
-                <p class="subtitle">To be filled by the massage therapist</p>
-                
-                <table class="score-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 10%;">#</th>
-                            <th style="width: 40%; text-align: left;">Skin type</th>
-                            <th style="width: 10%;">Q1</th>
-                            <th style="width: 10%;">Q2</th>
-                            <th style="width: 10%;">Q3</th>
-                            <th style="width: 10%;">Q4</th>
-                            <th style="width: 10%;">Q5</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td class="skin-type-col">Sensitive</td>
-                            <td class="empty-cell"><input type="checkbox" name="score_sensitive_q1"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_sensitive_q2"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_sensitive_q3"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_sensitive_q4"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_sensitive_q5"></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="skin-type-col">Oily</td>
-                            <td class="empty-cell"><input type="checkbox" name="score_oily_q1"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_oily_q2"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_oily_q3"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_oily_q4"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_oily_q5"></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td class="skin-type-col">Combination</td>
-                            <td class="empty-cell"><input type="checkbox" name="score_combo_q1"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_combo_q2"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_combo_q3"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_combo_q4"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_combo_q5"></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td class="skin-type-col">Normal</td>
-                            <td class="empty-cell"><input type="checkbox" name="score_normal_q1"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_normal_q2"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_normal_q3"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_normal_q4"></td>
-                            <td class="empty-cell"><input type="checkbox" name="score_normal_q5"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
         <footer>
-            <div class="footer-inputs">
-                <div class="input-wrapper" style="flex: 1;">
-                    <label style="color: var(--text-color); font-weight: normal;">Pro recommended facial:</label>
-                    <input type="text" name="proRecommendation" class="line-input">
-                </div>
-                <div class="input-wrapper" style="flex: 1;">
-                    <label style="color: var(--text-color); font-weight: normal;">Pro verified skin-type :</label>
-                    <input type="text" name="proVerifiedType" class="line-input">
-                </div>
-            </div>
-
             <p class="declaration">
-                **I declare that I have read this consultation form thoroughly and I understand every question asked. I believe I have no medical condition that may affect the treatment. All of the given answer is correct and true to the best of my knowledge.
+                **I declare that I have read this consultation form thoroughly and I understand every question asked. I believe I have no medical condition that may affect the service. All of the given answer is correct and true to the best of my knowledge.
             </p>
 
             <div class="signature-lines">
                 <div class="signature-wrapper">
-                    <label>Customer Signature:</label>
-                    <canvas id="customerSign" width="400" height="150"></canvas>
-                    <button type="button" class="clear-btn" onclick="clearCanvas('customerSign', custCtx)">Clear Signature</button>
+                    <label>Client's Signature</label>
+                    <canvas id="clientSign" width="400" height="150"></canvas>
+                    <button type="button" class="clear-btn" onclick="clearCanvas('clientSign', clientCtx)">Clear Signature</button>
                 </div>
                 <div class="signature-wrapper">
-                    <label>Pro Verified Skin-Type (Sign):</label>
-                    <canvas id="proSign" width="400" height="150"></canvas>
-                    <button type="button" class="clear-btn" onclick="clearCanvas('proSign', proCtx)">Clear Signature</button>
+                    <label>Attendant's Signature</label>
+                    <canvas id="attendantSign" width="400" height="150"></canvas>
+                    <button type="button" class="clear-btn" onclick="clearCanvas('attendantSign', attendantCtx)">Clear Signature</button>
                 </div>
             </div>
         </footer>
@@ -499,13 +402,13 @@
 <script>
     const scriptUrl = 'YOUR_APPS_SCRIPT_URL_HERE'; // Replace with your actual URL
 
-    const custCanvas = document.getElementById("customerSign");
-    const custCtx = custCanvas.getContext("2d");
-    const proCanvas = document.getElementById("proSign");
-    const proCtx = proCanvas.getContext("2d");
+    const clientCanvas = document.getElementById("clientSign");
+    const clientCtx = clientCanvas.getContext("2d");
+    const attendantCanvas = document.getElementById("attendantSign");
+    const attendantCtx = attendantCanvas.getContext("2d");
 
-    setupDrawing(custCanvas, custCtx);
-    setupDrawing(proCanvas, proCtx);
+    setupDrawing(clientCanvas, clientCtx);
+    setupDrawing(attendantCanvas, attendantCtx);
 
     function setupDrawing(canvas, ctx) {
         let isDrawing = false;
@@ -565,8 +468,8 @@
         this.innerText = "Submitting...";
 
         const formData = new FormData(form);
-        formData.append("customerSignature", custCanvas.toDataURL("image/png"));
-        formData.append("proSignature", proCanvas.toDataURL("image/png"));
+        formData.append("clientSignature", clientCanvas.toDataURL("image/png"));
+        formData.append("attendantSignature", attendantCanvas.toDataURL("image/png"));
 
         fetch(scriptUrl, { method: 'POST', body: formData })
         .then(res => res.text())
